@@ -46,36 +46,29 @@ def makeSomething(word_command):
                 if word_command.find(patternCommand.warp_drive[counter]) > -1:
                     print(patternCommand.warp_drive[counter])
                     print('ГОТОВА ЕПТА\n-=-=-=-=-=-=-=-=-=-')
-                    break
+                    return
 
             # убрать/выпустить шасси
             for counter in range(len(patternCommand.landing_gear)):
                 if word_command.find(patternCommand.landing_gear[counter]) > -1:
                     print(patternCommand.landing_gear[counter])
                     print("шасси активированы\n-=-=-=-=-=-=-=-=-=-")
-                    break
+                    return
 
             # запросить стыковку
             for counter in range(len(patternCommand.docking)):
                 if word_command.find(patternCommand.docking[counter]) > -1:
                     print(patternCommand.docking[counter])
                     print("Запросил\n-=-=-=-=-=-=-=-=-=-")
-                    break
+                    return
 
             # рассказать сказку
             for counter in range(len(patternCommand.story)):
                 if word_command.find(patternCommand.story[counter]) > -1:
                     print(patternCommand.story[counter])
                     print("Как дед насрал в каляску\n-=-=-=-=-=-=-=-=-=-")
-                    break
+                    return
 
 
 while True:
     makeSomething(command(False))
-# wordCommand = "активируй work"
-# print(patternCommand.warp_drive)
-# for i in range(len(patternCommand.warp_drive)):
-#     # print(patternCommand.warp_drive[i])
-#     if wordCommand.find(patternCommand.warp_drive[i]) > -1:
-#         print(patternCommand.warp_drive[i])
-#         print('ГОТОВА ЕПТА')

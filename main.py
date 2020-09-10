@@ -7,6 +7,7 @@ import patternCommand
     count - сколько иттераций ты внутри бота
 """
 def command(flag, count=0):
+    global word_command
     r = sr.Recognizer()
 
     # слушает микрофон
@@ -32,22 +33,41 @@ def command(flag, count=0):
 
     return word_command
 
-
+# функция выполнения команды
 def makeSomething(word_command):
     # обращение к боту
-    if word_command.find("стасян") > -1:
-        print("Шо надо")
-        word_command = command(True)
-        # активация варп-двигателя
-        for i in range(len(patternCommand.warp_drive)):
-            # print(patternCommand.warp_drive[i])
-            if word_command.find(patternCommand.warp_drive[i]) > -1:
-                print(patternCommand.warp_drive[i])
-                print('ГОТОВА ЕПТА')
+    for i in range(len(patternCommand.bot)):
+        if word_command.find(patternCommand.bot[i]) > -1:
+            print("Шо надо\n-=-=-=-=-=-=-=-=-=-")
+            word_command = command(True)
 
-        # выпустить шасси
-        if word_command.find('выпустить шасси') > -1:
-            print("выпускаю")
+            # активация варп-двигателя
+            for counter in range(len(patternCommand.warp_drive)):
+                if word_command.find(patternCommand.warp_drive[counter]) > -1:
+                    print(patternCommand.warp_drive[counter])
+                    print('ГОТОВА ЕПТА\n-=-=-=-=-=-=-=-=-=-')
+                    break
+
+            # убрать/выпустить шасси
+            for counter in range(len(patternCommand.landing_gear)):
+                if word_command.find(patternCommand.landing_gear[counter]) > -1:
+                    print(patternCommand.landing_gear[counter])
+                    print("шасси активированы\n-=-=-=-=-=-=-=-=-=-")
+                    break
+
+            # запросить стыковку
+            for counter in range(len(patternCommand.docking)):
+                if word_command.find(patternCommand.docking[counter]) > -1:
+                    print(patternCommand.docking[counter])
+                    print("Запросил\n-=-=-=-=-=-=-=-=-=-")
+                    break
+
+            # рассказать сказку
+            for counter in range(len(patternCommand.story)):
+                if word_command.find(patternCommand.story[counter]) > -1:
+                    print(patternCommand.story[counter])
+                    print("Как дед насрал в каляску\n-=-=-=-=-=-=-=-=-=-")
+                    break
 
 
 while True:

@@ -69,36 +69,44 @@ def make_something(word_command):
                     return
 
             # запросить стыковку
-            for counter in range(len(patternCommand.docking)):
-                if word_command.find(patternCommand.docking[counter]) > -1:
-                    print(patternCommand.docking[counter])
-                    print("Запросил\n-=-=-=-=-=-=-=-=-=-")
-                    directkeys.PressKey(hexDirKey.k1)
-                    directkeys.ReleaseKey(hexDirKey.k1)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.E)
-                    # directkeys.ReleaseKey(hexDirKey.E)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.E)
-                    # directkeys.ReleaseKey(hexDirKey.E)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.D)
-                    # directkeys.ReleaseKey(hexDirKey.D)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.SPACE)
-                    # directkeys.ReleaseKey(hexDirKey.SPACE)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.A)
-                    # directkeys.ReleaseKey(hexDirKey.A)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.Q)
-                    # directkeys.ReleaseKey(hexDirKey.Q)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.Q)
-                    # directkeys.ReleaseKey(hexDirKey.Q)
-                    # time.sleep(0.1)
-                    # directkeys.PressKey(hexDirKey.k1)
-                    # directkeys.ReleaseKey(hexDirKey.k1)
+            # for counter in range(len(patternCommand.docking)):
+            #     if word_command.find(patternCommand.docking[counter]) > -1:
+            #         print(patternCommand.docking[counter])
+            #         print("Запросил\n-=-=-=-=-=-=-=-=-=-")
+            #         directkeys.PressKey(hexDirKey.k1)
+            #         directkeys.ReleaseKey(hexDirKey.k1)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.E)
+            #         directkeys.ReleaseKey(hexDirKey.E)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.E)
+            #         directkeys.ReleaseKey(hexDirKey.E)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.D)
+            #         directkeys.ReleaseKey(hexDirKey.D)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.SPACE)
+            #         directkeys.ReleaseKey(hexDirKey.SPACE)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.A)
+            #         directkeys.ReleaseKey(hexDirKey.A)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.Q)
+            #         directkeys.ReleaseKey(hexDirKey.Q)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.Q)
+            #         directkeys.ReleaseKey(hexDirKey.Q)
+            #         time.sleep(0.1)
+            #         directkeys.PressKey(hexDirKey.k1)
+            #         directkeys.ReleaseKey(hexDirKey.k1)
+            #         winsound.Beep(frequency, duration)
+            #         return
+
+            # ночное зрение
+            for counter in range(len(patternCommand.night_vision)):
+                if word_command.find(patternCommand.night_vision[counter]) > -1:
+                    directkeys.PressKey(hexDirKey.I)
+                    directkeys.ReleaseKey(hexDirKey.I)
                     winsound.Beep(frequency, duration)
                     return
 

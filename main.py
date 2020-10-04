@@ -1,12 +1,9 @@
 import speech_recognition as sr
 import patternCommand
-import winsound
 import directkeys
 import hexDirKey
-import time
+from playsound import playsound
 
-frequency = 500  # Set Frequency To 2500 Hertz
-duration = 400  # Set Duration To 1000 ms == 1 second
 
 # функция прослушки микрофона и перевода в текст
 #   flag - флаг внутри ты бота или нет
@@ -32,6 +29,7 @@ def command(flag, count=0):
         print("Говори внятнее")
         if flag and count <= 3:
             count += 1
+            playsound("voice/govori.mp3")
             word_command = command(flag, count)
         else:
             make_something(command(False))
@@ -45,17 +43,17 @@ def make_something(word_command):
     for i in range(len(patternCommand.bot)):
         if word_command.find(patternCommand.bot[i]) > -1:
             print("Шо надо\n-=-=-=-=-=-=-=-=-=-")
-            winsound.Beep(700, duration)
+            playsound("voice/sho.mp3")
             word_command = command(True)
 
             # активация варп-двигателя
             for counter in range(len(patternCommand.warp_drive)):
                 if word_command.find(patternCommand.warp_drive[counter]) > -1:
                     print(patternCommand.warp_drive[counter])
-                    print('ГОТОВА ЕПТА\n-=-=-=-=-=-=-=-=-=-')
+                    print('Готово\n-=-=-=-=-=-=-=-=-=-')
                     directkeys.PressKey(hexDirKey.C)
                     directkeys.ReleaseKey(hexDirKey.C)
-                    winsound.Beep(frequency, duration)
+                    playsound("voice/varp_aktivirovan.mp3")
                     return
 
             # убрать/выпустить шасси
@@ -65,49 +63,20 @@ def make_something(word_command):
                     print("шасси активированы\n-=-=-=-=-=-=-=-=-=-")
                     directkeys.PressKey(hexDirKey.G)
                     directkeys.ReleaseKey(hexDirKey.G)
-                    winsound.Beep(frequency, duration)
+                    playsound("voice/shassi.mp3")
                     return
 
             # запросить стыковку
-            # for counter in range(len(patternCommand.docking)):
-            #     if word_command.find(patternCommand.docking[counter]) > -1:
-            #         print(patternCommand.docking[counter])
-            #         print("Запросил\n-=-=-=-=-=-=-=-=-=-")
-            #         directkeys.PressKey(hexDirKey.k1)
-            #         directkeys.ReleaseKey(hexDirKey.k1)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.E)
-            #         directkeys.ReleaseKey(hexDirKey.E)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.E)
-            #         directkeys.ReleaseKey(hexDirKey.E)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.D)
-            #         directkeys.ReleaseKey(hexDirKey.D)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.SPACE)
-            #         directkeys.ReleaseKey(hexDirKey.SPACE)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.A)
-            #         directkeys.ReleaseKey(hexDirKey.A)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.Q)
-            #         directkeys.ReleaseKey(hexDirKey.Q)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.Q)
-            #         directkeys.ReleaseKey(hexDirKey.Q)
-            #         time.sleep(0.1)
-            #         directkeys.PressKey(hexDirKey.k1)
-            #         directkeys.ReleaseKey(hexDirKey.k1)
-            #         winsound.Beep(frequency, duration)
-            #         return
+            for counter in range(len(patternCommand.docking)):
+                if word_command.find(patternCommand.docking[counter]) > -1:
+                    return
 
             # ночное зрение
             for counter in range(len(patternCommand.night_vision)):
                 if word_command.find(patternCommand.night_vision[counter]) > -1:
                     directkeys.PressKey(hexDirKey.I)
                     directkeys.ReleaseKey(hexDirKey.I)
-                    winsound.Beep(frequency, duration)
+                    playsound("voice/nochnoe.mp3")
                     return
 
             # рассказать сказку
@@ -115,7 +84,7 @@ def make_something(word_command):
                 if word_command.find(patternCommand.story[counter]) > -1:
                     print(patternCommand.story[counter])
                     print("Как дед насрал в каляску\n-=-=-=-=-=-=-=-=-=-")
-
+                    playsound("voice/skazka.mp3")
                     return
 
 
